@@ -25,18 +25,18 @@ function Login({ setToken }) {
     }
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-            <Form className="card text-dark bg-secondary">
+            <Form className="container text-dark bg-secondary border border-primary">
                 <div className="form-floating m-3">
                     <Field type='text' className="form-control" id='floatingEmail' name='email' placeholder="Email" />
                     <label htmlFor='floatingEmail'>Email</label>
-                    <ErrorMessage name='email' />
+                    <span className="text-danger d-flex fs-4"><ErrorMessage name='email' /></span>
                 </div>
                 <div className="form-floating m-3">
                     <Field type='password' className="form-control" id='floatingPassword' name='password' placeholder="Password" />
                     <label htmlFor='floatingPassword'>Password</label>
-                    <ErrorMessage name='password' />
+                    <span className="text-danger d-flex fs-4"><ErrorMessage name='password' /></span>
                 </div>
-                <button className="btn btn-primary btn-lg" type='submit'>submit</button>
+                <button className="btn btn-dark btn-lg" type='submit'>Submit</button>
             </Form>
         </Formik>
     )

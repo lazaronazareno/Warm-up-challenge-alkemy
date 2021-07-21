@@ -1,9 +1,29 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-function Details() {
+
+const Details = () => {
+    const quotesDetails = useSelector(store => store.quotes.details)
+    const loading = useSelector(store => store.quotes.loading)
+    const error = useSelector(store => store.quotes.error)
+
     return (
-        <div>
-            <h1>Details</h1>
+        <div className="bg-light d-flex flex-column border border-dark p-5">
+            { loading === true && (
+            <div className="d-flex justify-content-center m-3">
+                <div className="spinner-border" role="status" />
+            </div>
+          )}
+            { quotesDetails && (
+                <div className="d-flex flex-column">
+                    <span className="fs-3 p-2">{quotesDetails.body}</span>
+                    <Link to="/" className="btn btn-dark">Back</Link>
+                </div>
+            )}
+            {error && (
+                <h1>{error}</h1>
+            )}
         </div>
     )
 }
