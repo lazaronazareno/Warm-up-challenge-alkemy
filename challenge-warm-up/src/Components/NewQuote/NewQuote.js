@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage,} from 'formik'
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup'
 import api from '../../API/quotesApi'
 
@@ -13,15 +14,14 @@ const validationSchema = Yup.object({
     body: Yup.string().required('Required')
 })
 
-const onSubmit = async (values, onSubmitProps, e) => {
-    e.preventDefault();
+const onSubmit = async (values, onSubmitProps) => {
     try {
         await api.quotes.postQ(values)
+        alert('Quote Succesfully uploaded')
     } catch (error) {
         alert(error);
     }
-    console.log(values)
-    console.log(onSubmitProps)
+    onSubmitProps.resetForm()
 }
 
 function NewQuote() {
@@ -30,16 +30,17 @@ function NewQuote() {
         <Form className="container text-dark bg-secondary border border-primary">
             <h1>New Quote</h1>
             <div className="form-floating m-3">
-                <Field type='text' className="form-control" id='floatingTitle' name='title' placeholder="title" />
-                <label htmlFor='floatingTitle'>Title</label>
+                <Field type='text' className="form-control" id='title' name='title' placeholder="title" />
+                <label htmlFor='title'>Title</label>
                 <span className="text-danger d-flex fs-4"><ErrorMessage name='title' /></span>
             </div>
             <div className="form-floating m-3">
-                <Field type='text' className="form-control" id='floatingBody' name='body' placeholder="Body" />
-                <label htmlFor='floatingBody'>Body</label>
+                <Field type='text' className="form-control" id='body' name='body' placeholder="Body" />
+                <label htmlFor='body'>Body</label>
                 <span className="text-danger d-flex fs-4"><ErrorMessage name='body' /></span>
             </div>
             <button className="btn btn-dark btn-lg" type='submit'>Submit</button>
+            <Link to='/' className="btn btn-dark btn-lg">Back</Link>
         </Form>
     </Formik>
     )

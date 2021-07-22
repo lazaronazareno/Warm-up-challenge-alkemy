@@ -10,7 +10,6 @@ const initialState = {
 const GET_QUOTES = 'GET_QUOTES';
 const GET_DETAILS = 'GET_DETAILS';
 const IS_LOADING = 'IS_LOADING';
-const POST_QUOTE = 'POST_QUOTE';
 
 export default function reducer (state = initialState, action) {
     console.log(action)
@@ -48,10 +47,6 @@ export default function reducer (state = initialState, action) {
             return {
                 ...state,
                 loading: action.payload,
-            }
-        case POST_QUOTE :
-            return {
-
             }
         default:
             return state;
@@ -93,19 +88,4 @@ export const isLoading = () => (dispatch, getState) => {
         type: IS_LOADING,
         payload : true
     })
-}
-
-export const postQuote = (values) => async (dispatch, getState) => {
-    try {
-        await api.quotes.postQ(values)
-        dispatch({
-            type : POST_QUOTE,
-            payload : true,
-        })
-    } catch (error) {
-        dispatch ({
-            type: POST_QUOTE,
-            payload: error,
-        })
-    }
 }
