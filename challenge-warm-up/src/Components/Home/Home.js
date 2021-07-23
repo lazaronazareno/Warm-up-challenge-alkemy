@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getQuotes, isLoading, getDetails, deleteQuote } from '../../Redux/reducers';
+import { getQuotes, isLoading, getDetails, deleteQuote, sumNum, decNum } from '../../Redux/reducers';
 import './homeStyles.scss';
-import api from '../../API/quotesApi'
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -11,13 +10,14 @@ const Home = () => {
     const quotesList = useSelector(store => store.quotes.quotesList)
     const error = useSelector(store => store.quotes.error)
     const loading = useSelector(store => store.quotes.loading)
+    const numberPage = useSelector(store => store.quotes.numberPage)
 
     useEffect(() => {
         dispatch(isLoading())
-        dispatch(getQuotes())
+        dispatch(getQuotes(numberPage))
         return ;
     // eslint-disable-next-line
-        }, [])
+        }, [numberPage])
 
         let handleDetails = (id) => {
             dispatch(isLoading())
@@ -36,6 +36,7 @@ const Home = () => {
         <div className="container-fluid h-100">
             <h1>POSTS </h1>
             <Link to="/new" className="btn btn-dark">New</Link>
+            <span>Page {numberPage}</span>
             { loading === true && (
             <div className="d-flex justify-content-center m-3">
                 <div className="spinner-border" role="status" />
@@ -53,6 +54,12 @@ const Home = () => {
                 </div>
             ))}
           </div>
+          { numberPage > 1 && (
+              <button className="btn btn-dark" onClick={() => dispatch(decNum(numberPage))}>Prev Page</button>
+          )}
+          { numberPage < 5 && (
+              <button className="btn btn-dark" onClick={() => dispatch(sumNum(numberPage))}>Next Page</button>
+          )}
           {error && (
               <h1>{error}</h1>
           )}

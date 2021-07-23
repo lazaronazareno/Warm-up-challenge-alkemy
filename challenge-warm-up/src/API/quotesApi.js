@@ -24,8 +24,8 @@ const randomNumber = (min = 0, max = 1) =>
 
 const loginApi = {
   quotes: {
-    getQ() {
-        return callApi(`/`);
+    getQ(page) {
+        return callApi(`/?_page=${page}&_limit=20`);
       },
     getIdQ(id) {
         return callApi(`/${id}`)

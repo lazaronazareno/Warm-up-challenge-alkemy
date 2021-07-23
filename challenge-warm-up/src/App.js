@@ -6,6 +6,7 @@ import useToken from './useToken';
 import './App.css'
 import NewQuote from './Components/NewQuote/NewQuote';
 import Modify from './Components/Modify/Modify';
+import Header from './Components/Header/Header';
 
 function App() {
   const { token, setToken } = useToken();
@@ -19,6 +20,7 @@ function App() {
       )}
       { token && (
         <BrowserRouter>
+          <Header />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/details" component={Details} />

@@ -5,12 +5,15 @@ const initialState = {
     "details" : [],
     "loading" : false,
     "error" : null,
+    "numberPage" : 1,
 }
 
 const GET_QUOTES = 'GET_QUOTES';
 const GET_DETAILS = 'GET_DETAILS';
 const IS_LOADING = 'IS_LOADING';
 const DELETE_QUOTE = 'DELETE_QUOTE';
+const SUM_NUM = 'SUM_NUM';
+const DEC_NUM = 'DEC_NUM';
 
 export default function reducer (state = initialState, action) {
     console.log(action)
@@ -64,14 +67,26 @@ export default function reducer (state = initialState, action) {
                     loading: false
                 }
             }
+        case SUM_NUM :
+            return {
+                ...state,
+                quotesList:[],
+                numberPage : action.payload
+            }
+        case DEC_NUM :
+            return {
+                ...state,
+                quotesList:[],
+                numberPage : action.payload
+            }
         default:
             return state;
     }
 }
 
-export const getQuotes = () => async (dispatch, getState) => {
+export const getQuotes = (numberPage) => async (dispatch, getState) => {
     try {
-        const data = await api.quotes.getQ()
+        const data = await api.quotes.getQ(numberPage)
         dispatch({
             type : GET_QUOTES,
             payload : data,
@@ -120,4 +135,18 @@ export const deleteQuote = (id) => async (dispatch, getState) => {
         })
     }
 
+}
+
+export const sumNum = (num) => (dispatch, getState) => {
+    dispatch({
+        type: SUM_NUM,
+        payload : num + 1
+    })
+}
+
+export const decNum = (num) => (dispatch, getState) => {
+    dispatch({
+        type: DEC_NUM,
+        payload : num - 1
+    })
 }
