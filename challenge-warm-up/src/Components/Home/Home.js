@@ -23,7 +23,8 @@ const Home = () => {
             dispatch(getDetails(id))
         }
         let handleEdit = (id) => {
-            console.log('edit', id)
+            dispatch(isLoading())
+            dispatch(getDetails(id))
         }
         let handleDelete = (id) => {
             console.log('delete', id)

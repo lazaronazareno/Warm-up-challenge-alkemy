@@ -5,6 +5,7 @@ import Login from './Components/Login/Login';
 import useToken from './useToken';
 import './App.css'
 import NewQuote from './Components/NewQuote/NewQuote';
+import Modify from './Components/Modify/Modify';
 
 function App() {
   const { token, setToken } = useToken();
@@ -22,6 +23,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/details" component={Details} />
             <Route exact path="/new" component={NewQuote} />
+            <Route exact path="/edit" component={Modify} />
           </Switch>
         </BrowserRouter>
       )}
