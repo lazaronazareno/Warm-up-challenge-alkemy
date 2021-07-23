@@ -45,7 +45,7 @@ const Home = () => {
           )}
           <div className="container-fluid d-flex flex-wrap justify-content-evenly">
             {quotesList.map((quotes) => (
-                <div className="bg-light d-flex flex-column border border-dark p-3 hover" key={quotes.id}>
+                <div className="d-flex flex-column border border-dark p-3 rose hover" key={quotes.id}>
                     <span>Title:</span>
                     <span className="text-wrap">{quotes.title}</span>
                     <div className="d-flex justify-content-evenly">

@@ -27,7 +27,7 @@ const onSubmit = async (values, onSubmitProps) => {
 function NewQuote() {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-        <Form className="container text-dark bg-secondary border border-dark">
+        <Form className="container text-dark roseIntense border border-dark">
             <h1>New Quote</h1>
             <div className="form-floating m-3">
                 <Field type='text' className="form-control" id='title' name='title' placeholder="title" />

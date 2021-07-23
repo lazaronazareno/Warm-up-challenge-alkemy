@@ -1,11 +1,9 @@
 @import '../../Assets/globalStyles.scss';
 
-.hover {
-    &:hover {
-        background-color: $background!important;
-    }
-}
-
 .rose {
     background-color: $card!important;
+}
+
+.roseIntense {
+    background-color: $background!important;
 }

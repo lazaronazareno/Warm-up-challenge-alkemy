@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage,} from 'formik'
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup'
 import api from '../../API/quotesApi'
+import './modifyStyles.scss'
 
 const initialValues = {
     title : '',
@@ -11,8 +12,8 @@ const initialValues = {
 }
 
 const validationSchema = Yup.object({
-    title: Yup.string().required('Required'),
-    body: Yup.string().required('Required')
+    title: Yup.string().required('*Required'),
+    body: Yup.string().required('*Required')
 })
 
 function Modify(props) {
@@ -33,7 +34,7 @@ function Modify(props) {
 
     return (
         <div className="container d-flex flex-column">
-          <div className="container bg-light d-flex flex-column border border-dark p-5">
+          <div className="container rose d-flex flex-column border border-dark p-5">
               { loading === true && (
               <div className="d-flex justify-content-center m-3">
                   <div className="spinner-border" role="status" />
@@ -60,7 +61,7 @@ function Modify(props) {
           </div>
           { quotesDetails.body && (
               <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-                  <Form className="container text-dark bg-secondary border border-top-0 border-dark">
+                  <Form className="container text-dark roseIntense border border-top-0 border-dark">
                       <h1>Modify Quote</h1>
                       <span className="fw-bolder fs-4">Id : {quotesDetails.id}</span>
                       <div className="form-floating m-3">

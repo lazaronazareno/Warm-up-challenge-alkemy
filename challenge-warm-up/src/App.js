@@ -11,7 +11,7 @@ import Header from './Components/Header/Header';
 function App() {
   const { token, setToken } = useToken();
   return (
-    <div className="container-fluid App">
+    <div className="container-fluid bg-light App">
       {!token && (
         <BrowserRouter>
           <Login setToken={setToken} />

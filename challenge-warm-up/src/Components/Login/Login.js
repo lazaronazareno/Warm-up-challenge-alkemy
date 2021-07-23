@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage,} from 'formik'
 import PropTypes from 'prop-types';
 import * as Yup from 'yup'
 import loginApi from '../../API/loginApi'
+import './loginStyles.scss'
 
 const initialValues = {
     email : '',
@@ -25,7 +26,7 @@ function Login({ setToken }) {
     }
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-            <Form className="container d-flex flex-column text-dark bg-secondary border border-dark p-5">
+            <Form className="container d-flex flex-column text-dark roseIntense border border-dark p-5">
                 <h1>Login</h1>
                 <div className="form-floating m-3">
                     <Field type='text' className="form-control" id='floatingEmail' name='email' placeholder="Email" />

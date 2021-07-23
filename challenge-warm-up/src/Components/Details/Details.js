@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import './detailsStyles.scss'
 
 
 const Details = () => {
@@ -9,7 +10,7 @@ const Details = () => {
     const error = useSelector(store => store.quotes.error)
 
     return (
-        <div className="bg-light d-flex flex-column border border-dark p-5">
+        <div className="rose d-flex flex-column border border-dark p-5">
             { loading === true && (
             <div className="d-flex justify-content-center m-3">
                 <div className="spinner-border" role="status" />
