@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getQuotes, isLoading, getDetails } from '../../Redux/reducers';
+import { getQuotes, isLoading, getDetails, deleteQuote } from '../../Redux/reducers';
 import './homeStyles.scss';
+import api from '../../API/quotesApi'
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -26,8 +27,9 @@ const Home = () => {
             dispatch(isLoading())
             dispatch(getDetails(id))
         }
-        let handleDelete = (id) => {
-            console.log('delete', id)
+        let handleDelete = id => {
+            dispatch(isLoading())
+            dispatch(deleteQuote(id))
         }
         
     return (
@@ -46,7 +48,7 @@ const Home = () => {
                     <div>
                         <Link to="/details" className="btn btn-outline-dark" id={quotes.id} onClick={() => handleDetails(quotes.id)}>Details</Link>
                         <Link to="/edit" className="btn btn-outline-dark" id={quotes.id} onClick={() => handleEdit(quotes.id)}>Edit</Link>
-                        <button  className="btn btn-outline-dark" id={quotes.id} onClick={() => handleDelete(quotes.id)}>Delete</button>
+                        <button className="btn btn-outline-dark" id={quotes.id} onClick={() => handleDelete(quotes.id)}>Delete</button>
                     </div>
                 </div>
             ))}

@@ -10,6 +10,7 @@ const initialState = {
 const GET_QUOTES = 'GET_QUOTES';
 const GET_DETAILS = 'GET_DETAILS';
 const IS_LOADING = 'IS_LOADING';
+const DELETE_QUOTE = 'DELETE_QUOTE';
 
 export default function reducer (state = initialState, action) {
     console.log(action)
@@ -47,6 +48,21 @@ export default function reducer (state = initialState, action) {
             return {
                 ...state,
                 loading: action.payload,
+            }
+        case DELETE_QUOTE :
+            if(action.payload.response === 'error') {
+                return {
+                    ...state,
+                    error: action.payload.error,
+                    quotesList : [],
+                    loading : false
+                }
+            }else {
+                return {
+                    ...state,
+                    quotesList : state.quotesList.filter(quotes => quotes.id !== action.payload),
+                    loading: false
+                }
             }
         default:
             return state;
@@ -88,4 +104,20 @@ export const isLoading = () => (dispatch, getState) => {
         type: IS_LOADING,
         payload : true
     })
+}
+
+export const deleteQuote = (id) => async (dispatch, getState) => {
+    try {
+        await api.quotes.removeQ(id)
+        dispatch({
+            type: DELETE_QUOTE,
+            payload : id
+        })
+    } catch (error) {
+        dispatch({
+            type: DELETE_QUOTE,
+            payload : error
+        })
+    }
+
 }
