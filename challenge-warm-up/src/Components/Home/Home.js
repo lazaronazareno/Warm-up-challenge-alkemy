@@ -33,33 +33,41 @@ const Home = () => {
         }
         
     return (
-        <div className="container-fluid h-100">
-            <h1>POSTS </h1>
-            <Link to="/new" className="btn btn-dark">New</Link>
-            <span>Page {numberPage}</span>
+        <div className="container-fluid d-flex flex-column justify-content-center align-items-center mt-4">
+            <div className="container-fluid d-flex justify-content-around">
+              <h1>POSTS </h1>
+              <Link to="/new" className="btn btn-dark mb-2">New</Link>
+            </div>
             { loading === true && (
             <div className="d-flex justify-content-center m-3">
                 <div className="spinner-border" role="status" />
             </div>
           )}
-          <div className="container-fluid d-flex flex-wrap justify-content-center">
+          <div className="container-fluid d-flex flex-wrap justify-content-evenly">
             {quotesList.map((quotes) => (
-                <div className="bg-light border border-dark p-2 hover">
+                <div className="bg-light d-flex flex-column border border-dark p-3 hover" key={quotes.id}>
+                    <span>Title:</span>
                     <span className="text-wrap">{quotes.title}</span>
-                    <div>
-                        <Link to="/details" className="btn btn-outline-dark" id={quotes.id} onClick={() => handleDetails(quotes.id)}>Details</Link>
-                        <Link to="/edit" className="btn btn-outline-dark" id={quotes.id} onClick={() => handleEdit(quotes.id)}>Edit</Link>
-                        <button className="btn btn-outline-dark" id={quotes.id} onClick={() => handleDelete(quotes.id)}>Delete</button>
+                    <div className="d-flex justify-content-evenly">
+                        <Link to="/details" className="btn btn-dark" id={quotes.id} onClick={() => handleDetails(quotes.id)}>Details</Link>
+                        <Link to="/edit" className="btn btn-dark" id={quotes.id} onClick={() => handleEdit(quotes.id)}>Edit</Link>
+                        <button className="btn btn-dark" id={quotes.id} onClick={() => handleDelete(quotes.id)}>Delete</button>
                     </div>
                 </div>
             ))}
           </div>
-          { numberPage > 1 && (
-              <button className="btn btn-dark" onClick={() => dispatch(decNum(numberPage))}>Prev Page</button>
-          )}
-          { numberPage < 5 && (
-              <button className="btn btn-dark" onClick={() => dispatch(sumNum(numberPage))}>Next Page</button>
-          )}
+          <div className="container d-flex justify-content-evenly p-2">
+            { numberPage > 1 && loading === false && (
+                <button className="btn btn-lg btn-dark" onClick={() => dispatch(decNum(numberPage))}>Prev Page</button>
+            )}
+            { loading === false && (
+                <span className="fs-4">Page {numberPage}</span>
+            )}
+            { numberPage < 5 && loading === false && (
+                <button className="btn btn-lg btn-dark" onClick={() => dispatch(sumNum(numberPage))}>Next Page</button>
+            )}
+
+          </div>
           {error && (
               <h1>{error}</h1>
           )}

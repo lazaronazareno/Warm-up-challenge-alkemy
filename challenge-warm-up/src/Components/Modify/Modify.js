@@ -32,7 +32,7 @@ function Modify(props) {
     }    
 
     return (
-        <div className="d-flex flex-column">
+        <div className="container d-flex flex-column">
           <div className="container bg-light d-flex flex-column border border-dark p-5">
               { loading === true && (
               <div className="d-flex justify-content-center m-3">
@@ -42,9 +42,9 @@ function Modify(props) {
               { quotesDetails.body && (
                   <div className="d-flex flex-column">
                       <h1>Previous Quote</h1>
-                      <span className="fs-3">Title:</span>
+                      <span className="fw-bolder fs-3">Title:</span>
                       <span className="fs-3 p-2 pt-0">{quotesDetails.title}</span>
-                      <span className="fs-3">Body:</span>
+                      <span className="fw-bolder fs-3">Body:</span>
                       <span className="fs-3 p-2 pt-0">{quotesDetails.body}</span>
                   </div>
               )}
@@ -56,13 +56,13 @@ function Modify(props) {
                     <h1>Error: Quotes not Found</h1>
                     <Link to='/' className="btn btn-dark btn-lg">Back</Link>
                   </>
-                  )}
+              )}
           </div>
           { quotesDetails.body && (
               <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-                  <Form className="container text-dark bg-secondary border border-primary">
+                  <Form className="container text-dark bg-secondary border border-top-0 border-dark">
                       <h1>Modify Quote</h1>
-                      <span className="text-secondary d-flex fs-4">{quotesDetails.id}</span>
+                      <span className="fw-bolder fs-4">Id : {quotesDetails.id}</span>
                       <div className="form-floating m-3">
                           <Field type='text' className="form-control" id='title' name='title' placeholder="title" />
                           <label htmlFor='title'>Title</label>

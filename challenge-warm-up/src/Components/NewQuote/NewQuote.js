@@ -10,8 +10,8 @@ const initialValues = {
 }
 
 const validationSchema = Yup.object({
-    title: Yup.string().required('Required'),
-    body: Yup.string().required('Required')
+    title: Yup.string().required('*Required'),
+    body: Yup.string().required('*Required')
 })
 
 const onSubmit = async (values, onSubmitProps) => {
@@ -27,17 +27,17 @@ const onSubmit = async (values, onSubmitProps) => {
 function NewQuote() {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-        <Form className="container text-dark bg-secondary border border-primary">
+        <Form className="container text-dark bg-secondary border border-dark">
             <h1>New Quote</h1>
             <div className="form-floating m-3">
                 <Field type='text' className="form-control" id='title' name='title' placeholder="title" />
                 <label htmlFor='title'>Title</label>
-                <span className="text-danger d-flex fs-4"><ErrorMessage name='title' /></span>
+                <span className="text-danger d-flex fs-5"><ErrorMessage name='title' /></span>
             </div>
             <div className="form-floating m-3">
                 <Field type='text' className="form-control" id='body' name='body' placeholder="Body" />
                 <label htmlFor='body'>Body</label>
-                <span className="text-danger d-flex fs-4"><ErrorMessage name='body' /></span>
+                <span className="text-danger d-flex fs-5"><ErrorMessage name='body' /></span>
             </div>
             <button className="btn btn-dark btn-lg" type='submit'>Submit</button>
             <Link to='/' className="btn btn-dark btn-lg">Back</Link>

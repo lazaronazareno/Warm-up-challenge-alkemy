@@ -1,5 +1,11 @@
+@import '../../Assets/globalStyles.scss';
+
 .hover {
     &:hover {
-        background-color: sandybrown!important;
+        background-color: $card!important;
     }
+}
+
+.brown {
+    background-color: $intenseBrown!important;
 }

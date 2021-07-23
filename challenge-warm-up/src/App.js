@@ -3,7 +3,7 @@ import Details from './Components/Details/Details';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import useToken from './useToken';
-import './App.css'
+import './App.scss'
 import NewQuote from './Components/NewQuote/NewQuote';
 import Modify from './Components/Modify/Modify';
 import Header from './Components/Header/Header';
@@ -11,8 +11,7 @@ import Header from './Components/Header/Header';
 function App() {
   const { token, setToken } = useToken();
   return (
-    <>
-    <div className="container-fluid App bg-info d-flex justify-content-center align-items-center">
+    <div className="container-fluid App">
       {!token && (
         <BrowserRouter>
           <Login setToken={setToken} />
@@ -30,7 +29,6 @@ function App() {
         </BrowserRouter>
       )}
     </div>
-    </>
   );
 }
 

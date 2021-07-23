@@ -25,7 +25,8 @@ function Login({ setToken }) {
     }
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-            <Form className="container text-dark bg-secondary border border-primary">
+            <Form className="container d-flex flex-column text-dark bg-secondary border border-dark p-5">
+                <h1>Login</h1>
                 <div className="form-floating m-3">
                     <Field type='text' className="form-control" id='floatingEmail' name='email' placeholder="Email" />
                     <label htmlFor='floatingEmail'>Email</label>

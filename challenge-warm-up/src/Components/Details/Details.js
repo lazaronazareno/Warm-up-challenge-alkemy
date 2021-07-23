@@ -15,14 +15,21 @@ const Details = () => {
                 <div className="spinner-border" role="status" />
             </div>
           )}
-            { quotesDetails && (
+            { quotesDetails.body && (
                 <div className="d-flex flex-column">
+                    <h1>Body</h1>
                     <span className="fs-3 p-2">{quotesDetails.body}</span>
                     <Link to="/" className="btn btn-dark">Back</Link>
                 </div>
             )}
             {error && (
                 <h1>{error}</h1>
+            )}
+            {(!quotesDetails.body) && (loading === false) && (
+              <>
+                <h1>Error: Quotes not Found</h1>
+                <Link to='/' className="btn btn-dark btn-lg">Back</Link>
+              </>
             )}
         </div>
     )
