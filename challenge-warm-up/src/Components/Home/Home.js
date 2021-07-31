@@ -49,8 +49,8 @@ const Home = () => {
                     <span>Title:</span>
                     <span className="text-wrap">{quotes.title}</span>
                     <div className="d-flex justify-content-evenly">
-                        <Link to="/details" className="btn btn-dark" id={quotes.id} onClick={() => handleDetails(quotes.id)}>Details</Link>
-                        <Link to="/edit" className="btn btn-dark" id={quotes.id} onClick={() => handleEdit(quotes.id)}>Edit</Link>
+                        <Link to={`/details/${quotes.id}`} className="btn btn-dark" id={quotes.id} onClick={() => handleDetails(quotes.id)}>Details</Link>
+                        <Link to={`/edit/${quotes.id}`} className="btn btn-dark" id={quotes.id} onClick={() => handleEdit(quotes.id)}>Edit</Link>
                         <button className="btn btn-dark" id={quotes.id} onClick={() => handleDelete(quotes.id)}>Delete</button>
                     </div>
                 </div>

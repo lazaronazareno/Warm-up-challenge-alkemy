@@ -8,7 +8,7 @@ function Header() {
             <button className="btn btn-lg dropdown-toggle" data-bs-toggle="dropdown" href="#">Menu</button>
               <ul className="dropdown-menu p-0">
                   <Link to="/" className="list-group-item list-group-item-action list-group-item-danger dropdown-item">Home</Link>
-                  <Link to="/edit" className="list-group-item list-group-item-action list-group-item-danger dropdown-item">Edit</Link>
+                  <Link to="/edit/:id" className="list-group-item list-group-item-action list-group-item-danger dropdown-item">Edit</Link>
               </ul>
         </div>
     )

@@ -22,9 +22,9 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/details" component={Details} />
+            <Route exact path="/details/:id" component={Details} />
             <Route exact path="/new" component={NewQuote} />
-            <Route exact path="/edit" component={Modify} />
+            <Route exact path="/edit/:id" component={Modify} />
           </Switch>
         </BrowserRouter>
       )}
