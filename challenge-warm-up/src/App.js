@@ -1,23 +1,23 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Details from './Components/Details/Details';
 import Home from './Components/Home/Home';
-import Login from './Components/Login/Login';
-import useToken from './useToken';
+/* import Login from './Components/Login/Login';
+import useToken from './useToken'; */
 import './App.scss'
 import NewQuote from './Components/NewQuote/NewQuote';
 import Modify from './Components/Modify/Modify';
 import Header from './Components/Header/Header';
 
 function App() {
-  const { token, setToken } = useToken();
+/*   const { token, setToken } = useToken(); */
   return (
     <div className="container-fluid bg-light App">
-      {!token && (
+{/*       {!token && (
         <BrowserRouter>
           <Login setToken={setToken} />
         </BrowserRouter>
       )}
-      { token && (
+      { token && ( */}
         <BrowserRouter>
           <Header />
           <Switch>
@@ -27,7 +27,7 @@ function App() {
             <Route exact path="/edit/:id" component={Modify} />
           </Switch>
         </BrowserRouter>
-      )}
+{/*       )} */}
     </div>
   );
 }
